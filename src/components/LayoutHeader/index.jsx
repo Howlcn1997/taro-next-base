@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro from "@tarojs/taro";
 import React, { useState, useEffect } from "react";
 import { View } from "@tarojs/components";
 import BackIcon from "./js/BackIcon";
@@ -15,26 +15,27 @@ export default function LayoutHeader(props) {
     navStyle = {},
     wrapStyle = {},
     ghostHidden = false,
-    backHidden, //强制隐藏或显示back  true强制隐藏  false强制显示
-    homeHidden, //强制隐藏或显示home
+    showBack, //强制隐藏或显示back  true强制显示  false强制隐藏
+    showHome, //强制隐藏或显示home
     onBackClick, //定制backIcon触发函数
     onHomeClick, //定制homeIcon触发函数
-    customLeft = false, // 是否自定义左部布局
-    renderLeft, // 自定义左部样式 [仅当 customLeft 为 true 时生效]
+    renderLeft, // 自定义左部样式
   } = props;
   const [needback, setNeedback] = useState(false);
   const [needhome, setNeedhome] = useState(false);
 
   useEffect(() => {
     const pages = Taro.getCurrentPages();
+    const isSetShowBack = "showBack" in props;
+    const isSetShowHome = "showHome" in props;
 
-    if (pages.length > 1) {
-      setNeedback(this.props.hasOwnProperty("backHidden") ? !backHidden : true);
+    if (isSetShowBack || pages.length > 1) {
+      setNeedback(isSetShowBack ? showBack : true);
     }
-    if (!homeHidden && pages.length > 2) {
-      setNeedhome(this.props.hasOwnProperty("homeHidden") ? !homeHidden : true);
+    if (isSetShowHome || pages.length > 2) {
+      setNeedhome(isSetShowHome ? showHome : true);
     }
-  }, [backHidden, homeHidden]);
+  }, [showBack, showHome]);
 
   return (
     <View>
@@ -61,8 +62,8 @@ export default function LayoutHeader(props) {
             ...navStyle,
           }}
         >
-          {customLeft && <View>{renderLeft()}</View>}
-          {!customLeft && (
+          {renderLeft && <View>{renderLeft()}</View>}
+          {!renderLeft && (
             <View className="layout-header_nav_defaultIcons">
               {needback && <BackIcon onClick={onBackClick} />}
               {needhome && <HomeIcon onClick={onHomeClick} />}
