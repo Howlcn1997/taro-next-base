@@ -1,0 +1,28 @@
+.layout-header {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 199;
+  background-color: #fff;
+  &_nav {
+    display: flex;
+    align-items: center;
+    &_defaultIcons {
+      margin-left: 10px;
+      display: inline-flex;
+    }
+  }
+  &_title {
+    color: #111;
+    font-size: 34px;
+    font-weight: 500;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%, 0%);
+  }
+}
+.layout-header_ghost {
+  overflow: hidden;
+}

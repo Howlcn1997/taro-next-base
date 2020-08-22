@@ -1,0 +1,69 @@
+.scrollView {
+  height: 100%;
+}
+:global {
+  @keyframes rotating {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+.drag-list {
+  height: 100%;
+  &_inner {
+    min-height: 100%;
+    &_hasLoadMore {
+      min-height: calc(100% + 60px);
+    }
+    display: flex;
+    flex-direction: column;
+    &_top {
+      position: relative;
+      &_load {
+        width: 100%;
+        height: 80px;
+        font-size: 26px;
+        color: #999999;
+        overflow: hidden;
+        margin-top: -80px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &_icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &_loading {
+            animation: rotating 1s ease-in-out infinite;
+          }
+          &_text {
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: top;
+          }
+        }
+      }
+    }
+    &_content {
+      &_flex {
+        display: flex;
+        flex-direction: column;
+      }
+      flex: 1;
+      // min-height: 100%;
+      position: relative;
+    }
+    &_bottom {
+      color: #999999;
+      height: 60px;
+      font-size: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

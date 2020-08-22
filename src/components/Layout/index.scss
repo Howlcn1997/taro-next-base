@@ -1,0 +1,13 @@
+.layout {
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  &-content {
+    width: 100%;
+    flex: 1;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

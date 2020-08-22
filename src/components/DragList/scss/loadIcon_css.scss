@@ -1,0 +1,50 @@
+.loadIcon {
+  width: 40PX;
+  height: 40PX;
+  display: flex;
+  position: relative;
+  &-halfCircle {
+    height: 100%;
+    width: 200%;
+    background-color: rgb(39, 117, 255);
+    border-radius: 50%;
+    position: relative;
+    &-circleMask {
+      height: 30PX;
+      width: 30PX;
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &-mask {
+      height: 100%;
+      width: 50%;
+      position: absolute;
+      background-color: #fff;
+      top: 0PX;
+    }
+  }
+  &-left,
+  &-right {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &-left {
+    .loadIcon-halfCircle-mask {
+      right: 0PX;
+    }
+  }
+  &-right {
+    .loadIcon-halfCircle {
+      position: relative;
+      right: 100%;
+    }
+    .loadIcon-halfCircle-mask {
+      left: 0PX;
+    }
+  }
+}
